@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><a href="dashboard.html">Dashboard</a></li>
                 ${adminLinks}
                 <li><a href="#" id="logoutLink">Logout</a></li>
+                <li><a href="pricing.html">Access Application</a></li>
             `;
             const logoutLink = document.getElementById('logoutLink');
             if (logoutLink) {
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.innerHTML = `
                 <li><a href="index.html">Register Phone</a></li>
                 <li><a href="login.html">Login</a></li>
+                <li><a href="pricing.html">Access Application</a></li>
             `;
         }
     }
