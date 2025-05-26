@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  
+    /* If not using fixed navbar, padding-top might not be needed or can be smaller */
+}
+
+/* Example: Center content in a non-Bootstrap container if needed */
+/* .custom-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+} */
+
+/* Bootstrap 3 .form-control-static for the phone number display */
+.form-control-static {
+    padding-top: 7px; /* Align with form controls */
+    padding-bottom: 7px;
+    margin-bottom: 0;
+    min-height: 34px; /* Bootstrap default input height */
+    border: 1px solid #ccc; /* Optional: to make it look like a disabled field */
+    background-color: #eee; /* Optional: to make it look like a disabled field */
+    border-radius: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+}

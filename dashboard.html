@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Minyan List</title>
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Minyan List</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right" id="navLinks">
+                    <!-- Links will be populated by app.js -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Your Dashboard</h2>
+                <div id="loadingMessage" class="alert alert-info">Loading your information...</div>
+                <div id="userInfo" style="display:none;">
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Phone Number:</strong> <span id="userPhoneNumber"></span></p>
+                    
+                    <form id="updateProfileForm">
+                        <div class="form-group">
+                            <label>Current Call Preference:</label>
+                            <p id="currentCallPreference" style="font-weight:bold;"></p>
+                            <label>Update Call Preference:</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="callPreference" id="doNotCall" value="doNotCall">
+                                    Add to Do Not Call List
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="callPreference" id="onCall" value="onCall">
+                                    Add to On Call List
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">Current State:</label>
+                            <p id="currentState" style="font-weight:bold;"></p>
+                            <label for="state">Update State:</label>
+                            <select id="state" name="state" class="form-control">
+                                <option value="">Select State to Update</option>
+                                <!-- States will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                    <div id="updateStatusMessage" style="margin-top: 15px;"></div>
+                </div>
+                 <div id="errorMessage" class="alert alert-danger" style="display:none; margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js"></script> <!-- app.js for navbar and auth state -->
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Re-populate states for dashboard (could be moved to a shared utility)
+        const usStates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+        const stateSelect = document.getElementById('state');
+        usStates.forEach(state => {
+            stateSelect.innerHTML += `<option value="${state}">${state}</option>`;
+        });
+    </script>
+</body>
+</html>
